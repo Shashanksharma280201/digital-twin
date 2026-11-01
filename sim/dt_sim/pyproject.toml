@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dt_sim"
+version = "0.1.0"
+description = "Digital-twin sensor simulator (Mid-360 / Airy / ZED 2i / IMU) writing driver-native ROS 2 MCAP bags, plus evaluation against ground truth"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "scipy",
+  "pyyaml",
+  "rosbags>=0.10.9",
+  "open3d>=0.18",
+  "opencv-python-headless",
+  "laspy[lazrs]",
+  "dt_pipeline",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+dt_sim = "dt_sim.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dt_sim*"]

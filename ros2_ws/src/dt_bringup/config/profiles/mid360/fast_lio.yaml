@@ -1,0 +1,53 @@
+# FAST-LIO2 (hku-mars/FAST_LIO, ROS2 branch) on the canonical contract.
+# lidar_type 2 = Velodyne-style PointCloud2 {x,y,z,intensity,time,ring}; time is in
+# seconds relative to header.stamp (timestamp_unit 0). Produced by dt_lidar_bridge.
+/**:
+    ros__parameters:
+        feature_extract_enable: false
+        point_filter_num: 3
+        max_iteration: 3
+        filter_size_surf: 0.5
+        filter_size_map: 0.5
+        cube_side_length: 1000.0
+        runtime_pos_log_enable: false
+        map_file_path: ""
+
+        common:
+            lid_topic: "/dt/lidar/points"
+            imu_topic: "/dt/lidar/imu"
+            time_sync_en: false
+            time_offset_lidar_to_imu: 0.0
+
+        preprocess:
+            lidar_type: 2
+            scan_line: 4
+            blind: 0.3
+            timestamp_unit: 0
+            scan_rate: 10
+
+        mapping:
+            acc_cov: 0.1
+            gyr_cov: 0.1
+            b_acc_cov: 0.0001
+            b_gyr_cov: 0.0001
+            fov_degree: 360.0
+            det_range: 100.0
+            extrinsic_est_en: false
+            # LiDAR origin in the IMU (body) frame = -T_lidar_imu.xyz from rig.yaml.
+            # Rotation is identity because the bridge rotates the IMU into LiDAR axes.
+            extrinsic_T: [-0.011, -0.02329, 0.04412]
+            extrinsic_R: [1., 0., 0.,
+                          0., 1., 0.,
+                          0., 0., 1.]
+
+        publish:
+            path_en: true
+            effect_map_en: false
+            map_en: false
+            scan_publish_en: true
+            dense_publish_en: false
+            scan_bodyframe_pub_en: false
+
+        pcd_save:
+            pcd_save_en: false
+            interval: -1

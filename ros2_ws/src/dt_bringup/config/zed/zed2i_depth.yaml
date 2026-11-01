@@ -1,0 +1,28 @@
+# ZED 2i overrides with live depth (for nvblox). Same as zed2i_capture.yaml plus NEURAL_LIGHT depth.
+/**:
+    ros__parameters:
+        general:
+            grab_resolution: 'HD720'
+            grab_frame_rate: 30
+            pub_resolution: 'NATIVE'
+            pub_frame_rate: 15.0
+            sdk_timestamp_clock: 'SYSTEM_CLOCK'
+        depth:
+            depth_mode: 'NEURAL_LIGHT'
+            depth_stabilization: 0
+            point_cloud_freq: 5.0
+            min_depth: 0.3
+            max_depth: 15.0
+        pos_tracking:
+            pos_tracking_enabled: false
+            publish_tf: false
+            publish_map_tf: false
+        mapping:
+            mapping_enabled: false
+        object_detection:
+            od_enabled: false
+        body_tracking:
+            bt_enabled: false
+        sensors:
+            publish_imu_tf: false
+            sensors_pub_rate: 200.0

@@ -1,0 +1,18 @@
+{
+  "config_ros.json": {
+    "glim_ros": {
+      "points_topic": "/dt/lidar/points",
+      "imu_topic": "/dt/lidar/imu",
+      "acc_scale": 1.0,
+      "imu_frame_id": "body",
+      "lidar_frame_id": "lidar_link",
+      "publish_imu2lidar": false
+    }
+  },
+  "config_sensors.json": {
+    "sensors": {
+      "intensity_field": "intensity",
+      "ring_field": "ring"
+    }
+  }
+}

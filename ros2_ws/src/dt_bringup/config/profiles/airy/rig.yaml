@@ -1,0 +1,18 @@
+# Rig geometry for the RoboSense Airy profile (schema: pipeline/dt_pipeline/rig.py).
+# T_a_b is the pose of frame b expressed in frame a (p_a = T_a_b * p_b).
+profile: airy
+# Mount: lidar_link pose in base_link. Edit to match the bracket (tripod / robot).
+T_base_lidar: {xyz: [0.0, 0.0, 0.0], rpy: [0.0, 0.0, 0.0]}
+# Built-in IMU position in lidar_link. Translation unverified (community forks use 0);
+# rotation handled by dt_lidar_bridge (see bridge.yaml).
+T_lidar_imu: {xyz: [0.0, 0.0, 0.0], rpy: [0.0, 0.0, 0.0]}
+# Stand (2026-10-21, laptop): Airy on the sloped top plate, ZED on the front face below it.
+# Airy pitch measured from its IMU at rest: gravity (-3.43, 0.02, 8.98) m/s^2 -> 21 deg nose-down.
+# zed_camera_link (bottom-centre mount of the ZED) pose in lidar_link. Photo estimate
+# (xyz [0.136, 0, -0.076], pitch -0.366) refined target-free on capture 2 (`dtp extrinsic`,
+# photometric consistency over 80 SVO frames: cost 0.217 -> 0.191; +3.5 deg pitch, ~2 cm).
+# Re-run `dtp extrinsic` on a walking capture to confirm.
+T_lidar_camera: {xyz: [0.1422, 0.0056, -0.0928], rpy: [0.0006, -0.4273, -0.0166]}
+# Left lens optical frame in lidar_link: re-read from live TF after the stand geometry is final.
+T_lidar_camera_optical: null
+camera_time_offset: 0.0

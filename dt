@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Digital twin terminal entry point: `dt help` lists the commands.
+unset VIRTUAL_ENV  # ROS needs the system Python
+root="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
+# shellcheck source=scripts/jetson/env.sh
+source "$root/scripts/jetson/env.sh" >/dev/null
+exec python3 "$root/scripts/dt_cli.py" "$@"

@@ -1,0 +1,29 @@
+# ROS build output and upstream drivers (imported from ros2_ws/dt.repos)
+ros2_ws/build/
+ros2_ws/install/
+ros2_ws/log/
+ros2_ws/src/external/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# Generated locally
+graphify-out/
+DepthCamera_*.json
+DepthCapture_*.png
+RenderOption_*.json
+ScreenCamera_*.json
+ScreenCapture_*.png
+
+# Internal briefs and pictures of private rooms stay out of the public repo
+docs/artifacts/
+docs/analysis/img/capture2_extrinsic_check.jpg
+docs/analysis/img/capture3_flow_prediction_example.jpg
+docs/analysis/img/capture3_mesh_views.jpg
+docs/analysis/img/capture3_splat_frame_sweep.jpg
+docs/analysis/img/capture3_splat_predicted_frames.jpg
+docs/analysis/img/capture3_texture_score.jpg
+docs/analysis/img/capture3_textured_viewer.png

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>dt_bringup</name>
+  <version>0.1.0</version>
+  <description>Launch files, LiDAR profiles (Mid-360 / Airy) and rig geometry for the digital-twin capture stack.</description>
+  <maintainer email="shashank.sharma.280201@gmail.com">Shashank Sharma</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>rclcpp_components</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>dt_lidar_bridge</exec_depend>
+  <exec_depend>dt_tools</exec_depend>
+  <!-- Drivers and SLAM are imported via dt.repos; not hard deps so either profile builds alone. -->
+
+  <test_depend>ament_cmake_pytest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

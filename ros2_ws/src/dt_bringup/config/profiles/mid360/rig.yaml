@@ -1,0 +1,15 @@
+# Rig geometry for the Livox Mid-360 profile (schema: pipeline/dt_pipeline/rig.py).
+# T_a_b is the pose of frame b expressed in frame a (p_a = T_a_b * p_b).
+profile: mid360
+# Mount: lidar_link pose in base_link. Edit to match the bracket (tripod / robot).
+T_base_lidar: {xyz: [0.0, 0.0, 0.0], rpy: [0.0, 0.0, 0.0]}
+# Built-in IMU position in lidar_link (Livox spec: 11.0, 23.29, -44.12 mm).
+# Rotation is identity because dt_lidar_bridge rotates the IMU into lidar axes.
+T_lidar_imu: {xyz: [0.011, 0.02329, -0.04412], rpy: [0.0, 0.0, 0.0]}
+# zed_camera_link pose in lidar_link. Rough CAD guess until calibrated
+# (dt_apply_camera_calib overwrites this and T_lidar_camera_optical).
+T_lidar_camera: {xyz: [0.08, 0.0, -0.06], rpy: [0.0, 0.0, 0.0]}
+# Left rectified optical frame (OpenCV axes) in lidar_link; filled by calibration.
+T_lidar_camera_optical: null
+# Seconds to add to camera stamps to align them with the LiDAR clock.
+camera_time_offset: 0.0

@@ -1,0 +1,19 @@
+points_bridge:
+  ros__parameters:
+    input_type: livox_custom     # livox_ros_driver2 xfer_format 1
+    input_topic: /livox/lidar
+    output_topic: /dt/lidar/points
+    frame_id: lidar_link
+    min_range: 0.3
+    max_range: 100.0
+    livox_tag_filter: true
+imu_bridge:
+  ros__parameters:
+    input_topic: /livox/imu
+    output_topic: /dt/lidar/imu
+    frame_id: body
+    acc_scale: 9.80665           # Livox reports acceleration in g
+    gyro_scale: 1.0
+    rotation: [1.0, 0.0, 0.0,
+               0.0, 1.0, 0.0,
+               0.0, 0.0, 1.0]

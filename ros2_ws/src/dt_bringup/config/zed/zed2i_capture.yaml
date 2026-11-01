@@ -1,0 +1,31 @@
+# ZED 2i overrides for capture (zed-ros2-wrapper v5, passed as ros_params_override_path).
+# LIO owns the TF tree, so ZED tracking/TF are off; depth is off to save GPU.
+# Use zed2i_depth.yaml when a live depth stream is needed (nvblox, M3).
+/**:
+    ros__parameters:
+        general:
+            grab_resolution: 'HD1080'
+            grab_frame_rate: 30
+            # The SVO2 keeps every full-resolution frame for colour (dtp colorize --source svo); the
+            # ROS image is a half-size preview so CPU JPEG for the bag no longer starves FAST-LIO
+            # (capture 2: 7.7 Hz at full size on the laptop).
+            pub_resolution: 'CUSTOM'
+            pub_downscale_factor: 2.0
+            pub_frame_rate: 15.0
+            sdk_timestamp_clock: 'SYSTEM_CLOCK'   # follows CLOCK_REALTIME, which phc2sys disciplines
+        depth:
+            depth_mode: 'NONE'
+            depth_stabilization: 0
+        pos_tracking:
+            pos_tracking_enabled: false
+            publish_tf: false
+            publish_map_tf: false
+        mapping:
+            mapping_enabled: false
+        object_detection:
+            od_enabled: false
+        body_tracking:
+            bt_enabled: false
+        sensors:
+            publish_imu_tf: false
+            sensors_pub_rate: 200.0

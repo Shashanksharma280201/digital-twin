@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dt_pipeline"
+version = "0.1.0"
+description = "Offline digital-twin pipeline (ROS-free): trajectory, maps, change detection, COLMAP export"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy<2",  # the vdbfusion 0.1.6 wheel segfaults in integrate() under numpy 2
+    "scipy",
+    "pyyaml",
+    "rosbags>=0.10",
+    "laspy[lazrs]",
+    "small_gicp",
+    "open3d",
+    "opencv-python-headless<4.11",  # 4.11+ requires numpy 2
+    "scikit-image<0.25",  # marching cubes for dtp fuse
+    "vdbfusion; platform_machine == 'x86_64'",  # CPU `dtp mesh` only; no aarch64 wheel
+]
+# PyTorch (GPU steps: fuse, colorize, refine/polish inputs) is installed by
+# scripts/jetson/08_install_python_tools.sh: the CUDA wheel on x86-64, JetPack's own build on the Orin.
+
+[project.optional-dependencies]
+full = ["py4dgeo", "dufomap"]
+copc = ["pdal"]
+test = ["pytest"]
+
+[project.scripts]
+dtp = "dt_pipeline.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dt_pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

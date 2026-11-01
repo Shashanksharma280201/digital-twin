@@ -1,0 +1,109 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Help Height: 0
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid (1 m)
+      Enabled: true
+      Reference Frame: lidar_link
+      Cell Size: 1
+      Plane Cell Count: 20
+    - Class: rviz_default_plugins/TF
+      Name: TF (all frames)
+      Enabled: true
+      Show Names: true
+      Show Axes: true
+      Show Arrows: true
+      Marker Scale: 0.6
+      Update Interval: 0
+    - Class: rviz_default_plugins/Axes
+      Name: LiDAR frame (lidar_link)
+      Enabled: true
+      Reference Frame: lidar_link
+      Length: 0.25
+      Radius: 0.012
+    - Class: rviz_default_plugins/Axes
+      Name: LiDAR IMU frame (body)
+      Enabled: true
+      Reference Frame: body
+      Length: 0.12
+      Radius: 0.008
+    - Class: rviz_default_plugins/Axes
+      Name: Camera mount (zed_camera_link)
+      Enabled: true
+      Reference Frame: zed_camera_link
+      Length: 0.2
+      Radius: 0.01
+    - Class: rviz_default_plugins/Axes
+      Name: Camera optical (left lens, z forward)
+      Enabled: true
+      Reference Frame: zed_left_camera_frame_optical
+      Length: 0.15
+      Radius: 0.008
+    - Class: rviz_default_plugins/PointCloud2
+      Name: LiDAR scan (/dt/lidar/points)
+      Enabled: true
+      Topic:
+        Value: /dt/lidar/points
+        Reliability Policy: Best Effort
+        History Policy: Keep Last
+        Depth: 5
+      Style: Points
+      Size (Pixels): 2
+      Color Transformer: Intensity
+      Channel Name: intensity
+      Use rainbow: true
+      Autocompute Intensity Bounds: true
+      Decay Time: 0
+    - Class: rviz_default_plugins/Camera
+      Name: LiDAR over camera (calibration check)
+      Enabled: true
+      Topic:
+        Value: /zed/zed_node/rgb/color/rect/image
+        Reliability Policy: Reliable
+        History Policy: Keep Last
+        Depth: 2
+      Image Rendering: background and overlay
+      Overlay Alpha: 0.6
+      Zoom Factor: 1
+      Far Plane Distance: 100
+      Visibility:
+        LiDAR scan (/dt/lidar/points): true
+        Grid (1 m): false
+        TF (all frames): false
+        LiDAR frame (lidar_link): false
+        LiDAR IMU frame (body): false
+        Camera mount (zed_camera_link): false
+        Camera optical (left lens, z forward): false
+  Global Options:
+    Fixed Frame: map
+    Background Color: 30; 32; 38
+    Frame Rate: 30
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Distance: 2.5
+      Focal Point:
+        X: 0.6
+        Y: 0
+        Z: 0
+      Pitch: 0.45
+      Yaw: 3.6
+      Target Frame: body
+Window Geometry:
+  Width: 1800
+  Height: 1000

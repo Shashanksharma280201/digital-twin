@@ -1,0 +1,27 @@
+# Upstream ROS 2 packages for the digital-twin stack.
+# Imported into ros2_ws/src/external by scripts/jetson/07_build_workspace.sh:
+#   vcs import --recursive src/external < dt.repos
+# Livox-SDK2 (non-ROS) is built separately by 02_install_livox_sdk2.sh.
+# GLIM comes from apt (04_install_glim.sh).
+# After a good build, the exact commits are frozen in dt.lock.repos.
+repositories:
+  livox_ros_driver2:
+    type: git
+    url: https://github.com/Livox-SDK/livox_ros_driver2.git
+    version: master
+  rslidar_sdk:
+    type: git
+    url: https://github.com/RoboSense-LiDAR/rslidar_sdk.git
+    version: v1.5.20
+  rslidar_msg:
+    type: git
+    url: https://github.com/RoboSense-LiDAR/rslidar_msg.git
+    version: master
+  FAST_LIO:
+    type: git
+    url: https://github.com/hku-mars/FAST_LIO.git
+    version: ROS2
+  zed-ros2-wrapper:
+    type: git
+    url: https://github.com/stereolabs/zed-ros2-wrapper.git
+    version: master
